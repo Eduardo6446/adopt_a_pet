@@ -1,0 +1,257 @@
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <script src="https://cdn.tailwindcss.com"></script>
+
+        <script>
+            tailwind.config = {
+                theme: {
+                    extend: {
+                        colors: {
+                            clifford: '#da373d',
+                        }
+                    }
+                }
+            }
+        </script>
+
+        <!-- AlpineJS -->
+        <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.8.2/dist/alpine.min.js" defer></script>
+
+        <!--Boxicons-->
+        <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+
+        <!--JQuery-->
+        <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+
+
+        {% block extra_head %}{% endblock extra_head %}
+        <title>{% block title %}{% endblock title %}</title>
+    </head>
+
+    <body class="bg-gray-100 dark:bg-dark-main flex justify-center">
+
+        <nav class="bg-white dark:bg-dark-second h-max md:h-14 w-full shadow flex flex-col md:flex-row items-center justify-center md:justify-between fixed top-0 z-50 border-b dark:border-dark-third">
+
+            <!-- LEFT NAV -->
+            <div class="flex items-center justify-between w-full md:w-max px-4 py-2">
+                
+                <a href="#" class="mr-2 hidden md:inline-block">
+                    <img src="https://thumbs.dreamstime.com/z/icono-animal-del-vector-de-la-huella-doméstico-perro-gato-logotipo-pata-125994798.jpg"
+                        alt="" class="w-24 sm:w-20 lg:w-10 h-auto">
+                </a>
+
+                <a href="#" class="inline-block md:hidden">
+                    <img src="https://thumbs.dreamstime.com/z/icono-animal-del-vector-de-la-huella-doméstico-perro-gato-logotipo-pata-125994798.jpg"
+                        alt="" class="w-10 h-10">
+                </a>
+
+                <div class="flex items-center justify-between space-x-1">
+
+                    <div class="relative bg-gray-100 dark:bg-dark-third px-2 py-2 w-13 h-10 sm:w-11 sm:h-11 lg:h-10 lg:w-10 xl:w-max xl:pl-3 xl:pr-8 rounded-full flex items-center justify-center cursor-pointer">
+                        
+                        <i class='bx bx-search-alt-2 text-xl xl:mr-2 dark:text-dark-txt'></i>
+                        
+                        <input type="text" placeholder="Search" class="outline-none border-none bg-transparent hidden xl:inline-block">
+                    </div>
+
+                </div>
+
+            </div>
+            <!-- END LEFT NAV -->
+
+            <!-- MAIN NAV -->
+            <ul x-data="{ open: false }" class="flex w-full lg:w-max items-center justify-center">
+                <li class="w-1/6 md:w-max text-center">
+                    <a href="#"
+                        class="w-full text-3xl py-2 px-3 xl:px-12 cursor-pointer text-center inline-block rounded text-green-600 hover:bg-green-100 dark:hover:bg-dark-third dark:text-dark-txt relative">
+                        <i class='bx bxs-home'></i>
+                    </a>
+                </li>
+
+                <li class="w-1/6 md:w-max text-center">
+                    <a href="#"
+                        class="w-full text-3xl py-2 px-3 xl:px-12 cursor-pointer text-center inline-block rounded text-green-600 hover:bg-green-100 dark:hover:bg-dark-third dark:text-dark-txt relative">
+                        <i class='bx bx-group'></i>
+                    </a>
+                </li>
+
+                <li class="w-1/6 md:w-max text-center">
+                    <button @click="open=true"
+                        class="w-full text-3xl py-2 px-3 xl:px-12 cursor-pointer text-center inline-block rounded text-green-600 hover:bg-green-100 dark:hover:bg-dark-third dark:text-dark-txt relative">
+                        <i class='bx bx-user'></i>
+                    </button>
+                </li>
+                
+                <li class="w-1/6 md:w-max text-center">
+                    <button @click="open=true"
+                        class="w-full text-3xl py-2 px-3 xl:px-12 cursor-pointer text-center inline-block rounded text-green-600 hover:bg-green-100 dark:hover:bg-dark-third dark:text-dark-txt relative">
+                        <i>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="25" style="fill: rgb(0, 165, 63);"><path d="M17 14a5 5 0 0 0 2.71-.81L20 13a3.16 3.16 0 0 0 .45-.37l.21-.2a4.48 4.48 0 0 0 .48-.58l.06-.08a4.28 4.28 0 0 0 .41-.76 1.57 1.57 0 0 0 .09-.23 4.21 4.21 0 0 0 .2-.63l.06-.25A5.5 5.5 0 0 0 22 9V2l-3 3h-4l-3-3v7a5 5 0 0 0 5 5zm2-7a1 1 0 1 1-1 1 1 1 0 0 1 1-1zm-4 0a1 1 0 1 1-1 1 1 1 0 0 1 1-1z"></path><path d="M11 22v-5H8v5H5V11.9a3.49 3.49 0 0 1-2.48-1.64A3.59 3.59 0 0 1 2 8.5 3.65 3.65 0 0 1 6 5a1.89 1.89 0 0 0 2-2 1 1 0 0 1 1-1 1 1 0 0 1 1 1 3.89 3.89 0 0 1-4 4C4.19 7 4 8.16 4 8.51S4.18 10 6 10h5.09A6 6 0 0 0 19 14.65V22h-3v-5h-2v5z"></path></svg>
+                        </i>
+                    </button>
+                </li>
+
+                <li class="w-1/3 md:w-max text-center inline-block md:hidden">
+                    <button @click="open=true"
+                        class="w-full text-3xl py-2 px-3 xl:px-12 cursor-pointer text-center inline-block rounded text-green-600 hover:bg-green-100 dark:hover:bg-dark-third dark:text-dark-txt relative">
+                        <i class='bx bx-menu'></i>
+                    </button>
+                </li>
+
+                <!--LEFT Mobile Sidebar-->
+                <div @keydown.window.escape="open = false" x-show="open" aria-labelledby="slide-over-title" x-ref="dialog" aria-modal="true" class="fixed z-10 inset-0 overflow-auto xl:hidden ">
+
+                    <div class="absolute inset-0 overflow-hidden">
+
+                        <div x-description="Background overlay, show/hide based on slide-over state." class="absolute inset-0" @click="open = false" aria-hidden="true"></div>
+
+                        <div class="fixed inset-y-0 right-0 pl-10 max-w-full flex ">
+
+                            <div x-show="open" @click.away="open = false" class="w-screen max-w-md" x-description="Slide-over panel, show/hide based on slide-over state.">
+                                
+                                <div class="h-full flex flex-col py-6 bg-white dark:bg-dark-second shadow-xl overflow-y-scroll scrollbar-hide">
+                                    
+                                    <div class="px-4 sm:px-6">
+
+                                        <div class="flex items-start justify-between">
+
+                                            <h2 class="text-lg font-medium dark:text-gray-500 text-gray-900"
+                                                id="slide-over-title">
+                                                AdopAPet menu
+                                            </h2>
+
+                                            <!--boton para cerrarlo-->
+
+                                            <div class="ml-3 h-7 flex items-center">
+                                                <button class="bg-white dark:bg-dark-third rounded-md text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" @click="open = false">
+                                                    <span class="sr-only">Close panel</span>
+                                                    <svg class="h-6 w-6" x-description="Heroicon name: outline/x" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"> <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                    </div>
+
+                </div>
+            </ul>
+            <!-- END MAIN NAV -->
+            
+            <div class="mt-6 relative flex-1 px-4 sm:px-6">
+                <!-- Replace with your content -->
+
+                <!--Menu Items-->
+
+                <div class="flex justify-center h-screen">
+                    <!--left sidebar-->
+
+                    <div class="w-1/5 pt-16 h-full hidden xl:flex flex-col fixed top-0 left-0">
+
+                        <ul class="p-4">
+
+                            <li>
+                                <a href="#"
+                                    class="flex items-center space-x-2 p-2 hover:bg-gray-200 rounded-lg transition-all dark:text-dark-txt dark:hover:bg-dark-third">
+                                    <img src="./images/tuat.jpg" alt="Profile picture"
+                                        class="w-10 h-10 rounded-full">
+                                    <span class="font-semibold">Tran Anh Tuat</span>
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="#"
+                                    class="flex items-center space-x-2 p-2 hover:bg-gray-200 rounded-lg transition-all dark:text-dark-txt dark:hover:bg-dark-third dark:focus:bg-dark-second">
+                                    <i class='bx bx-group text-gray-500'></i>
+                                    <span class="font-semibold">Friends</span>
+                                </a>
+                            </li>
+                            
+                            <li>
+                                <a href="#"
+                                    class="flex items-center space-x-2 p-2 hover:bg-gray-200 rounded-lg transition-all dark:text-dark-txt dark:hover:bg-dark-third">
+                                    <span
+                                        class="w-10 h-10 rounded-full grid place-items-center bg-gray-300 dark:bg-dark-second">
+                                        <i class='bx bx-chevron-down'></i>
+                                    </span>
+                                    <span class="font-semibold">See more</span>
+                                </a>
+                            </li> 
+
+                            <li class="border-b border-gray-200 dark:border-dark-third mt-6"></li>
+                        </ul>
+                        <!-- /End replace -->
+                    </div>
+                
+                </div>
+            </div>
+
+            <!-- RIGHT NAV -->
+
+            <ul class="hidden md:flex mx-4 items-center justify-center">
+
+                <ul class="hidden md:flex mx-4 items-center justify-center">
+            
+                    <li>
+                        <div x-data="{open:false}">
+                        <div @click="open=true" class="text-xl grid place-items-center dark:bg-dark-second bg-gray-200 dark:bg-dark-third dark:text-dark-txt rounded-full mx-1 p-3 cursor-pointer hover:bg-gray-300 relative">
+                            <i class='bx bxs-exit'></i>
+                        </div>
+            
+                            <div x-show="open" @click.away="open=false" class="origin-top-right absolute right-0 mt-2 w-56 rounded-md shadow-lg dark:bg-dark-second bg-white ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="menu-button" tabindex="-1">
+                                <div class="py-1" role="none">
+                                <!-- Active: "bg-gray-100 text-gray-900", Not Active: "text-gray-700" -->
+                                <form method="POST" action="#" role="none">
+                                    <button type="submit" class="text-gray-700 dark:text-dark-txt block w-full text-left px-4 py-2 text-sm" role="menuitem" tabindex="-1" id="menu-item-3">
+                                    Cerrar Sesion
+                                    </button>
+                                </form>
+                                </div>
+                            </div>
+                        </div>
+            
+                    </li>
+                    
+                </ul>
+                
+
+                
+
+            </ul>
+            
+            <!-- END RIGHT NAV -->
+
+        </nav>
+
+        <!--main content-->
+
+        <div class="w-full lg:w-2/3 xl:w-2/5 pt-32 lg:pt-16 px-2">
+            {% block content %}
+            
+            {% endblock content %}
+        </div>
+
+        <!-- RIGHT NAV -->
+
+        <div class="w-1/5 pt-16 h-full hidden xl:block px-4 fixed top-0 right-0">
+            <ul class="hidden md:flex mx-4 items-center justify-center">
+                <li class="h-full xl:flex">
+                    Mascotas
+                </li>        
+            </ul>
+            <!-- END RIGHT NAV -->
+
+        </div>
+        
+        {% block javascript %}{% endblock javascript %}
+    </body>
+
+</html>
