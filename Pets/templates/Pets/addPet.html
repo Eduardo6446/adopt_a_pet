@@ -1,0 +1,41 @@
+{% extends 'Pets/index.html' %}
+
+{% load static %}
+
+
+
+{% block addPet %}
+<div class="container">
+
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+
+        <div class="container">
+            <div class="row">
+                <div class="col-sm">
+
+                </div>
+            </div>
+
+            
+
+
+            <div class="row">
+                <table class="table">
+                    {{ form.as_table }}
+                </table>
+            </div>
+
+            <div class="row">
+                <div class="cols-sm"></div>
+                <div class="cols-sm"></div>
+                <div class="cols-sm">
+                    <button type="submit" class="btn btn-success">Guardar</button>
+                    <button type="" class="btn btn-danger">Cancelar</button>
+                </div>
+            </div>
+        </div>
+    </form>
+    
+</div>
+{% endblock addPet %}

@@ -4,27 +4,16 @@ from django.utils import timezone
 
 class Pet(models.Model):
     name = models.CharField(max_length=50)
+    description = models.CharField(max_length=500, null=True)
     species = models.CharField(max_length=50)
     breed = models.CharField(max_length=50)
     age = models.IntegerField()
-    description = models.TextField()
     pet_pic = models.ImageField(upload_to='pet_pic/', blank=False)
     owner = models.ForeignKey('User', on_delete=models.CASCADE)
+    
 
     def __str__(self):
-        return self.name
-
-    def serialize_pet(self):
-        return {
-            'id': self.id,
-            "name": self.name,
-            "species": self.species,
-            "breed": self.breed,
-            "age": self.age,
-            "description": self.description,
-            "pet_pic": self.pet_pic.url,
-            "owner": self.owner.username
-        }
+        return f"{self.name}"
 
 
 class User(AbstractUser):
@@ -33,7 +22,7 @@ class User(AbstractUser):
     cover = models.ImageField(upload_to='covers/', blank=True)
 
     def __str__(self):
-        return self.username
+        return f"{self.username}"
 
     def serialize(self):
         return {
@@ -85,4 +74,3 @@ class Follower(models.Model):
 
     def __str__(self):
         return f"User: {self.user}"
-        

@@ -1,0 +1,99 @@
+{% extends 'Pets/index.html' %}
+
+{% load static %}
+{% block search %}
+<div class="container">
+    <nav class="head">
+        <form method="get">
+            <div class="input-group">
+                <input class="form-control bg-light border-0 small" type="text" name="buscar" id="buscar" placeholder="Buscar">
+                <div class="input-group-append">
+                  <button class="btn btn-success" style="border-radius: 0 50px 50px 0;" type="submit">
+                    <svg width="1em" height="1em" class="bi bi-search" fill="#ffffff" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" d="M10.442 10.442a1 1 0 0 1 1.415 0l3.85 3.85a1 1 0 0 1-1.414 1.415l-3.85-3.85a1 1 0 0 1 0-1.415z"/>
+                        <path fill-rule="evenodd" d="M6.5 12a5.5 5.5 0 1 0 0-11 5.5 5.5 0 0 0 0 11zM13 6.5a6.5 6.5 0 1 1-13 0 6.5 6.5 0 0 1 13 0z"/>
+                    </svg>
+                  </button>
+                </div>
+            </div>
+        </form>    
+    </nav>
+</div>
+
+<div class="container">
+    <div class="accordion accordion-flush" id="accordionFlushExample">
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="flush-headingOne">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+              Usuarios
+            </button>
+          </h2>
+          <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+            <div class="accordion-body">
+                {%for item in post %}
+                    <div class="suggestion-user">
+                        <div>
+                            <a href="{% url 'profile' item.username %}">
+                                <div class="small-profilepic" style="background-image: url(/media/{{item.profile_pic}})"></div>
+                            </a>
+                        </div>
+                        <div class="user-details">
+                            <a href="{% url 'profile' item.username %}">
+                                <div id="user-name">
+                                    <strong>
+                                        {{item.first_name}} {{item.last_name}}
+                                    </strong>
+                                </div>
+                                <div class="grey">@{{item.username}}</div>
+                            </a>
+                        </div>
+                    </div>   
+                {% empty %}
+                    <h1>no hay</h1>
+                {%endfor%}
+
+            </div>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="flush-headingThree">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
+              Mascotas
+            </button>
+          </h2>
+          <div id="flush-collapseThree" class="accordion-collapse collapse" aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample">
+            <div class="accordion-body">
+                {%for item in mascotas %}
+
+                <div class="suggestion-user">
+                    <div>
+                        <a href="{% url 'pet' item.id %}">
+                            <div class="small-profilepic" style="background-image: url(/media/{{item.pet_pic}})"></div>
+                        </a>
+                    </div>
+                    <div class="user-details">
+                        <a href="{% url 'pet' item.id %}">
+                            <div id="user-name">
+                                <strong>
+                                    {{item.name}}
+                                </strong>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                    {% empty %}
+                        <h1>holi</h1>
+                {%endfor%}
+            </div>
+          
+            </div>
+        </div>
+      </div>
+
+    
+
+    
+    
+</div>
+{% endblock search %}
